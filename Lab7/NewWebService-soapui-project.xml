@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="20881346-1a26-4a99-8377-4d244ef8fb18" activeEnvironment="Default" name="NewWebService" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="58bf02bd-d1db-4b37-bf5d-557781dd6b1c" wsaVersion="NONE" name="NewWebServiceServiceSoapBinding" type="wsdl" bindingName="{http://soap.medvedev.ru/}NewWebServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/home/emedvedev/Java%20лабы/Lab7/NewWebService.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/emedvedev/Java%20лабы/Lab7/NewWebService.xml"><con:part><con:url>file:/home/emedvedev/Java%20лабы/Lab7/NewWebService.xml</con:url><con:content><![CDATA[<wsdl:definitions name="NewWebServiceService" targetNamespace="http://soap.medvedev.ru/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.medvedev.ru/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://soap.medvedev.ru/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getAreas" type="tns:getAreas"/>
+      <xs:element name="getAreasResponse" type="tns:getAreasResponse"/>
+      <xs:element name="sayHello" type="tns:sayHello"/>
+      <xs:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+      <xs:complexType name="getAreas">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAreasResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:responcePojo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responcePojo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="area" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sayHello">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sayHelloResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="JAXBException" type="tns:JAXBException"/>
+      <xs:complexType name="JAXBException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="JAXBException">
+    <wsdl:part element="tns:JAXBException" name="JAXBException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHello">
+    <wsdl:part element="tns:sayHello" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAreasResponse">
+    <wsdl:part element="tns:getAreasResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAreas">
+    <wsdl:part element="tns:getAreas" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHelloResponse">
+    <wsdl:part element="tns:sayHelloResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NewWebService">
+    <wsdl:operation name="getAreas">
+      <wsdl:input message="tns:getAreas" name="getAreas"></wsdl:input>
+      <wsdl:output message="tns:getAreasResponse" name="getAreasResponse"></wsdl:output>
+      <wsdl:fault message="tns:JAXBException" name="JAXBException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <wsdl:input message="tns:sayHello" name="sayHello"></wsdl:input>
+      <wsdl:output message="tns:sayHelloResponse" name="sayHelloResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NewWebServiceServiceSoapBinding" type="tns:NewWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAreas">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAreas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAreasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="JAXBException">
+        <soap:fault name="JAXBException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sayHello">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayHelloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NewWebServiceService">
+    <wsdl:port binding="tns:NewWebServiceServiceSoapBinding" name="NewWebServicePort">
+      <soap:address location="http://localhost:8080/SOAP-1.0-SNAPSHOT/NewWebService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/SOAP-1.0-SNAPSHOT/NewWebService</con:endpoint></con:endpoints><con:operation id="c4c5b24b-c1a3-48da-9176-5e43057e5bd8" isOneWay="false" action="" name="getAreas" bindingOperationName="getAreas" type="Request-Response" outputName="getAreasResponse" inputName="getAreas" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d18f166b-6b2e-4d93-9fc1-9053fc00683b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/SOAP-1.0-SNAPSHOT/NewWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.medvedev.ru/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getAreas>
+         <!--Optional:-->
+         <arg0>10</arg0>
+      </soap:getAreas>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.medvedev.ru/NewWebService/getAreas"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="36f6616a-ed6f-47dd-91ac-9dae06e15dea" isOneWay="false" action="" name="sayHello" bindingOperationName="sayHello" type="Request-Response" outputName="sayHelloResponse" inputName="sayHello" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c0a6df20-7a4a-45f8-b036-101dafc7a776" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/SOAP-1.0-SNAPSHOT/NewWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.medvedev.ru/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:sayHello>
+         <!--Optional:-->
+         <arg0>?</arg0>
+      </soap:sayHello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.medvedev.ru/NewWebService/sayHello"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
